@@ -40,11 +40,15 @@ class Game:
             tuple[Mode.PAPER.value, Mode.ROCK.value]: Mode.PAPER.value,
             tuple[Mode.PAPER.value, Mode.SCISSORS.value]: Mode.SCISSORS.value,
             tuple[Mode.SCISSORS.value, Mode.ROCK.value]: Mode.ROCK.value,
-            tuple[Mode.SCISSORS.value, Mode.PAPER.value]: Mode.SCISSORS.value
+            tuple[Mode.SCISSORS.value, Mode.PAPER.value]: Mode.SCISSORS.value,
         }
 
-    def validate_play(self, player_1_play: dict[str, str], player_2_play: dict[str, str]) -> None:
-        play_1, play_2 = player_1_play.get(self.player_1), player_2_play.get(self.player_2)
+    def validate_play(
+        self, player_1_play: dict[str, str], player_2_play: dict[str, str]
+    ) -> None:
+        play_1, play_2 = player_1_play.get(self.player_1), player_2_play.get(
+            self.player_2
+        )
 
         play_winner = self.get_play_winner()
 
@@ -60,23 +64,29 @@ class Game:
         modes = [mode.value for mode in Mode]
         if trie not in modes:
             raise Exception('Invalid mode, try again!')
-        
+
         return True
-    
+
     def start(self) -> None:
         logger.info('Welcome to the rock-paper-scissors game!')
 
         while self.tries < self.DEFAULT_TRIES:
-            trie_1 = input(f'- Type the mode for the player {self.player_1.nickname}: ')
+            trie_1 = input(
+                f'- Type the mode for the player {self.player_1.nickname}: '
+            )
             self.validate_mode(trie_1)
-            trie_2 = input(f'- Type the mode for the player {self.player_2.nickname}: ')
+            trie_2 = input(
+                f'- Type the mode for the player {self.player_2.nickname}: '
+            )
             self.validate_mode(trie_2)
 
             if trie_1 == trie_2:
                 self.tries += 1
                 continue
 
-            player_1_play, player_2_play = {self.player_1: trie_1}, {self.player_2: trie_2}
+            player_1_play, player_2_play = {self.player_1: trie_1}, {
+                self.player_2: trie_2
+            }
             self.validate_play(player_1_play, player_2_play)
 
             self.tries += 1
@@ -84,7 +94,9 @@ class Game:
         winner = self.get_game_winner()
 
         if winner:
-            logger.info(f'The winner was {winner} with {self.result.get(winner)} tries')
+            logger.info(
+                f'The winner was {winner} with {self.result.get(winner)} tries'
+            )
         else:
             logger.info('No winner!')
 
