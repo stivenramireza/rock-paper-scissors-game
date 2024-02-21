@@ -1,5 +1,5 @@
-from src.models.player import Player
-from src.models.game import Game
+from models.player import Player
+from models.game import Game
 
 
 def main() -> None:
