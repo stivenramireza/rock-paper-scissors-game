@@ -1,9 +1,7 @@
 class Player:
-    name: str
     nickname: str
 
-    def __init__(self, name: str, nickname: str):
-        self.name = name
+    def __init__(self, nickname: str):
         self.nickname = nickname
 
     def __str__(self) -> str:

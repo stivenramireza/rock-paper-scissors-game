@@ -1,10 +1,10 @@
 from enum import Enum
 
-from models.player import Player
-from utils.logger import logger
+from src.models.player import Player
+from src.utils.logger import logger
 
 
-class Mode(Enum):
+class Mode(str, Enum):
     ROCK = 'ROCK'
     PAPER = 'PAPER'
     SCISSORS = 'SCISSORS'
@@ -35,12 +35,12 @@ class Game:
 
     def _get_play_winner(self) -> dict[tuple, Mode]:
         return {
-            tuple[Mode.ROCK.value, Mode.PAPER.value]: Mode.PAPER.value,
-            tuple[Mode.ROCK.value, Mode.SCISSORS.value]: Mode.ROCK.value,
-            tuple[Mode.PAPER.value, Mode.ROCK.value]: Mode.PAPER.value,
-            tuple[Mode.PAPER.value, Mode.SCISSORS.value]: Mode.SCISSORS.value,
-            tuple[Mode.SCISSORS.value, Mode.ROCK.value]: Mode.ROCK.value,
-            tuple[Mode.SCISSORS.value, Mode.PAPER.value]: Mode.SCISSORS.value,
+            tuple[Mode.ROCK, Mode.PAPER]: Mode.PAPER,
+            tuple[Mode.ROCK, Mode.SCISSORS]: Mode.ROCK,
+            tuple[Mode.PAPER, Mode.ROCK]: Mode.PAPER,
+            tuple[Mode.PAPER, Mode.SCISSORS]: Mode.SCISSORS,
+            tuple[Mode.SCISSORS, Mode.ROCK]: Mode.ROCK,
+            tuple[Mode.SCISSORS, Mode.PAPER]: Mode.SCISSORS,
         }
 
     def _validate_play(self, player_1_play: dict[str, str], player_2_play: dict[str, str]) -> None:
@@ -57,7 +57,7 @@ class Game:
             self.result[self.player_2] = self.counter_2
 
     def _validate_mode(self, trie: str) -> bool:
-        modes = [mode.value for mode in Mode]
+        modes = [mode for mode in Mode]
         if trie not in modes:
             raise Exception('Invalid mode, try again!')
 

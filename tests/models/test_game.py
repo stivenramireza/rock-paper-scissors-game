@@ -6,8 +6,8 @@ from src.models.player import Player
 
 def test_game_str() -> None:
     # Arrange
-    player_1 = Player(name='Test 1', nickname='test_1')
-    player_2 = Player(name='Test 2', nickname='test_2')
+    player_1 = Player(nickname='test_1')
+    player_2 = Player(nickname='test_2')
 
     game = Game(player_1, player_2)
 
@@ -17,8 +17,8 @@ def test_game_str() -> None:
 
 def test_game_validate_mode_failed() -> None:
     # Arrange
-    player_1 = Player(name='Test 1', nickname='test_1')
-    player_2 = Player(name='Test 2', nickname='test_2')
+    player_1 = Player(nickname='test_1')
+    player_2 = Player(nickname='test_2')
 
     game = Game(player_1, player_2)
 
@@ -32,8 +32,8 @@ def test_game_validate_mode_failed() -> None:
 
 def test_game_validate_mode_sucess() -> None:
     # Arrange
-    player_1 = Player(name='Test 1', nickname='test_1')
-    player_2 = Player(name='Test 2', nickname='test_2')
+    player_1 = Player(nickname='test_1')
+    player_2 = Player(nickname='test_2')
 
     game = Game(player_1, player_2)
 
@@ -46,8 +46,8 @@ def test_game_validate_mode_sucess() -> None:
 
 def test_game_validate_play_player_1() -> None:
     # Arrange
-    player_1 = Player(name='Test 1', nickname='test_1')
-    player_2 = Player(name='Test 2', nickname='test_2')
+    player_1 = Player(nickname='test_1')
+    player_2 = Player(nickname='test_2')
 
     game = Game(player_1, player_2)
 
@@ -62,8 +62,8 @@ def test_game_validate_play_player_1() -> None:
 
 def test_game_validate_play_player_2() -> None:
     # Arrange
-    player_1 = Player(name='Test 1', nickname='test_1')
-    player_2 = Player(name='Test 2', nickname='test_2')
+    player_1 = Player(nickname='test_1')
+    player_2 = Player(nickname='test_2')
 
     game = Game(player_1, player_2)
 
@@ -78,8 +78,8 @@ def test_game_validate_play_player_2() -> None:
 
 def test_game_get_game_winner_player_1() -> None:
     # Arrange
-    player_1 = Player(name='Test 1', nickname='test_1')
-    player_2 = Player(name='Test 2', nickname='test_2')
+    player_1 = Player(nickname='test_1')
+    player_2 = Player(nickname='test_2')
 
     game = Game(player_1, player_2)
 
