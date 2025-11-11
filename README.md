@@ -10,19 +10,19 @@ Here you can find a small version of this game in a console application. The ide
 
 ## Setup
 
-First of all, you need to install [Python 3.12](https://www.python.org).
+First of all, you need to install [Python 3.14](https://www.python.org).
 
 Later, you can create a **virtual environment** and active it in order to install the dependencies only for this project:
 
 ```bash
-$ python3.12 -m venv venv
-$ source venv/bin/activate
+$ python3.14 -m venv .venv
+$ source .venv/bin/activate
 ```
 
 After that, you must install the dependencies:
 
 ```bash
-pip install --upgrade -r requirements.txt
+$ pip install -r requirements.txt
 ```
 
 Now you have an environment to run this application and the automated tests.
