@@ -120,14 +120,18 @@ def test_game_start_player_1_wins() -> None:
 
     # Mock user inputs: player_1 always wins
     inputs = [
-        'PAPER', 'ROCK',    # Round 1: PAPER beats ROCK
-        'PAPER', 'ROCK',    # Round 2: PAPER beats ROCK
-        'PAPER', 'ROCK',    # Round 3: PAPER beats ROCK
+        'PAPER',
+        'ROCK',  # Round 1: PAPER beats ROCK
+        'PAPER',
+        'ROCK',  # Round 2: PAPER beats ROCK
+        'PAPER',
+        'ROCK',  # Round 3: PAPER beats ROCK
     ]
 
     # Act
-    with patch('builtins.input', side_effect=inputs), \
-         patch('src.utils.logger.logger.info') as mock_logger:
+    with patch('builtins.input', side_effect=inputs), patch(
+        'src.utils.logger.logger.info'
+    ) as mock_logger:
         game.start()
 
     # Assert
@@ -145,14 +149,18 @@ def test_game_start_player_2_wins() -> None:
 
     # Mock user inputs: player_2 always wins
     inputs = [
-        'ROCK', 'PAPER',    # Round 1: PAPER beats ROCK
-        'ROCK', 'PAPER',    # Round 2: PAPER beats ROCK
-        'ROCK', 'PAPER',    # Round 3: PAPER beats ROCK
+        'ROCK',
+        'PAPER',  # Round 1: PAPER beats ROCK
+        'ROCK',
+        'PAPER',  # Round 2: PAPER beats ROCK
+        'ROCK',
+        'PAPER',  # Round 3: PAPER beats ROCK
     ]
 
     # Act
-    with patch('builtins.input', side_effect=inputs), \
-         patch('src.utils.logger.logger.info') as mock_logger:
+    with patch('builtins.input', side_effect=inputs), patch(
+        'src.utils.logger.logger.info'
+    ) as mock_logger:
         game.start()
 
     # Assert
@@ -171,14 +179,18 @@ def test_game_start_with_ties() -> None:
     # Mock user inputs: with ties that get skipped
     # Note: ties increment tries counter, so we need extra rounds
     inputs = [
-        'ROCK', 'ROCK',     # Tie (tries becomes 1, continue)
-        'PAPER', 'ROCK',    # Round 1: PAPER beats ROCK (player_1 wins, tries becomes 2)
-        'ROCK', 'PAPER',    # Round 2: PAPER beats ROCK (player_2 wins, tries becomes 3)
+        'ROCK',
+        'ROCK',  # Tie (tries becomes 1, continue)
+        'PAPER',
+        'ROCK',  # Round 1: PAPER beats ROCK (player_1 wins, tries becomes 2)
+        'ROCK',
+        'PAPER',  # Round 2: PAPER beats ROCK (player_2 wins, tries becomes 3)
     ]
 
     # Act
-    with patch('builtins.input', side_effect=inputs), \
-         patch('src.utils.logger.logger.info') as mock_logger:
+    with patch('builtins.input', side_effect=inputs), patch(
+        'src.utils.logger.logger.info'
+    ) as mock_logger:
         game.start()
 
     # Assert
@@ -197,14 +209,18 @@ def test_game_start_no_winner() -> None:
 
     # Mock user inputs: all ties - game should end with no winner
     inputs = [
-        'ROCK', 'ROCK',       # Tie (skipped)
-        'PAPER', 'PAPER',     # Tie (skipped)
-        'SCISSORS', 'SCISSORS',  # Tie (skipped)
+        'ROCK',
+        'ROCK',  # Tie (skipped)
+        'PAPER',
+        'PAPER',  # Tie (skipped)
+        'SCISSORS',
+        'SCISSORS',  # Tie (skipped)
     ]
 
     # Act
-    with patch('builtins.input', side_effect=inputs), \
-         patch('src.utils.logger.logger.info') as mock_logger:
+    with patch('builtins.input', side_effect=inputs), patch(
+        'src.utils.logger.logger.info'
+    ) as mock_logger:
         game.start()
 
     # Assert
